@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material UI</title>
+
+    <!-- Material UI CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mui/material@latest/dist/material.min.css">
+    
+    <!-- Material UI Icons (Optional) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color:lightgray;
+           
+        }
+       body.dark-mode {
+         background-color: #121212;
+        	color: #ffffff;
+        }
+
+        button{
+
+        	background-color:lightcoral;
+        	color:white;
+        	border-radius:5px;
+        	cursor:pointer;
+        }
+        .material-icons{
+
+        	margin-left: 50px;
+        }
+        .mui-appbar{
+        	margin-top:-30px;
+        }
+    </style>
+</head>
+<body>
+<button onclick="toggleDarkMode()" class="mui-button mui-button--contained">click here for Dark Mode</button>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+<br><br>
+    <h1>Material UI</h1>
+
+
+
+    <nav class="mui-appbar">
+    <table width="100%">
+        <tr style="vertical-align:middle;">
+            <td align="right">
+                <button class="mui-button mui-button--text">Home</button>
+                <button class="mui-button mui-button--text">About</button>
+                <button class="mui-button mui-button--text">Contact</button>
+            </td>
+        </tr>
+    </table>
+</nav>
+
+
+    <!-- MUI Button -->
+    <button class="mui-button mui-button--contained">Click Me</button>
+<button class="mui-button mui-button--outlined">Outlined Button</button>
+<button class="mui-button mui-button--text">Text Button</button>
+    <!-- MUI Card -->
+    <div class="mui-card" style="padding: 20px; max-width: 300px; box-shadow: 0px 4px 6px rgba(0,0,0,0.5);">
+        <h3>MUI Card</h3>
+        <p>HI!!..</p>
+    </div>
+<br><br>
+    <!-- MUI Icons -->
+    <span class="material-icons">home</span>
+	<span class="material-icons">person</span>
+	<span class="material-icons">settings</span>
+
+<br><br>
+ <h3>Simple form</h3>
+<form>
+	<label class="mui-form-label">Full name:</label>
+<input type="email" class="mui-textfield" placeholder="Enter your fullname"><br><br>
+<label class="mui-form-label">Email:</label>
+<input type="email" class="mui-textfield" placeholder="Enter your email"><br><br>
+
+<label>
+    <input type="checkbox" class="mui-checkbox">
+    check1
+</label>
+ <input type="checkbox" class="mui-checkbox">
+    check2
+</label>
+<input type="checkbox" class="mui-checkbox">
+    check3
+</label>
+<input type="checkbox" class="mui-checkbox">
+    check4
+</label>
+
+<br><br>
+
+<label>
+    <input type="radio" name="gender" class="mui-radio"> Male
+</label>
+<label>
+    <input type="radio" name="gender" class="mui-radio"> Female
+</label><br>
+
+</form>
+
+<br><br>
+<div id="snackbar" class="mui-snackbar">snackbar message!</div>
+
+<script>
+    function showSnackbar() {
+        var snackbar = document.getElementById("snackbar");
+        snackbar.classList.add("mui--is-visible");
+        setTimeout(() => {
+            snackbar.classList.remove("mui--is-visible");
+        }, 3000);
+    }
+</script>
+
+<button onclick="showSnackbar()" class="mui-button mui-button--contained">Show Snackbar</button>
+
+
+</body>
+</html>
