@@ -1,2 +1,2 @@
 a small sample website using html and tailwind css
-practise websit using material UI
+ and practise website using material UI
