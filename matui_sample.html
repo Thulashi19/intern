@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material UI</title>
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mui/material@latest/dist/material.min.css">
+    
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding: 30px;
+            background-color: lightgray;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #FF4081;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .mui-appbar {
+            margin-top: -30px;
+            background-color: #6200ea;
+        }
+
+        .mui-card {
+            padding: 20px;
+            max-width: 350px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .material-icons {
+            font-size: 30px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .mui-textfield {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .mui-checkbox, .mui-radio {
+            margin-top: 10px;
+        }
+
+        .mui-snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .mui-snackbar.mui--is-visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            background-color: #6200ea;
+            padding: 20px;
+            color: white;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-section {
+            margin-top: 30px;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            margin-left: 20px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .mui-card {
+                max-width: 90%;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <button onclick="toggleDarkMode()" class="mui-button mui-button--contained">change to Dark Mode</button>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+
+    <br><br>
+    <h1 style="text-align: center; font-size: 36px;">Welcome to Material UI</h1>
+
+  
+    <nav class="mui-appbar mui--appbar-dark">
+        <table width="100%">
+            <tr style="vertical-align:middle;">
+                <td align="right">
+                    <button class="mui-button mui-button--text" onclick="setActive('home')">Home</button>
+                    <button class="mui-button mui-button--text" onclick="setActive('about')">About</button>
+                    <button class="mui-button mui-button--text" onclick="setActive('contact')">Contact</button>
+                </td>
+            </tr>
+        </table>
+    </nav>
+
+    <script>
+        function setActive(section) {
+            
+            const buttons = document.querySelectorAll('.mui-button--text');
+            buttons.forEach(button => button.classList.remove('mui-button--active'));
+            
+            
+            const activeButton = document.querySelector(`button[onclick="setActive('${section}')"]`);
+            activeButton.classList.add('mui-button--active');
+        }
+    </script>
+
+   
+    <div style="text-align: center;">
+        <button class="mui-button mui-button--contained">Contained Button</button>
+        <button class="mui-button mui-button--outlined">Outlined Button</button>
+        <button class="mui-button mui-button--text">Text Button</button>
+    </div>
+
+    
+    <div class="mui-card" style="margin: 20px auto;">
+        <h3>MUI Card</h3>
+        <p>This is a beautifully styled card. It looks great with Material UI!</p>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleFAQ('faq1')">What is Material UI?</div>
+        <div id="faq1" class="faq-answer">
+            Material UI is a popular React component library that implements Google's Material Design principles.
+        </div>
+        
+        <div class="faq-question" onclick="toggleFAQ('faq2')">How do I install Material UI?</div>
+        <div id="faq2" class="faq-answer">
+            You can install Material UI using npm or yarn: 
+            <code>npm install @mui/material @emotion/react @emotion/styled</code>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(faqId) {
+            const faqAnswer = document.getElementById(faqId);
+            faqAnswer.style.display = faqAnswer.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
+    <br><br>
+    <h3>Simple Form</h3>
+    <form style="max-width: 400px; margin: auto;" onsubmit="return validateForm()">
+        <label class="mui-form-label">Full Name:</label>
+        <input type="text" id="fullName" class="mui-textfield" placeholder="Enter your full name" required><br><br>
+
+        <label class="mui-form-label">Email:</label>
+        <input type="email" id="email" class="mui-textfield" placeholder="Enter your email" required><br><br>
+
+        <label>
+            <input type="checkbox" class="mui-checkbox" required> I accept the terms and conditions
+        </label><br><br>
+
+        <label>
+            <input type="radio" name="gender" class="mui-radio" required> Male
+        </label>
+        <label>
+            <input type="radio" name="gender" class="mui-radio" required> Female
+        </label><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+
+            if (!fullName || !email) {
+                alert("Please fill out all fields.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <br><br>
+    <div id="snackbar" class="mui-snackbar"> Good Luck!</div>
+
+    
+    <div style="text-align: center;">
+        <button onclick="showSnackbar()" class="mui-button mui-button--contained">click here</button>
+    </div>
+
+    <script>
+        function showSnackbar() {
+            var snackbar = document.getElementById("snackbar");
+            snackbar.classList.add("mui--is-visible");
+            setTimeout(() => {
+                snackbar.classList.remove("mui--is-visible");
+            }, 3000);
+        }
+    </script>
+
+    
+    <footer>
+        <p>&copy; 2025 Material UI Demo</p>
+        <a href="">Privacy Policy</a>
+        <a href="">Terms of Service</a>
+        <a href="">Contact</a>
+    </footer>
+</body>
+</html>
